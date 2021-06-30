@@ -1,0 +1,93 @@
+#include <iostream>
+#include <cmath>
+#include <string.h>
+using namespace std;
+int main()
+{
+   //РЕШЕНИЕ КВАДРАТНОГО УРАВНЕНИЯ
+   
+    float a,b,c;
+    cout<<"введи коэф. при  a ";
+    cin>>a;
+    cout<<"введи коэф. при  b ";
+    cin>>b;
+    cout<<"введи коэф. при  c ";
+    cin>>c;
+    double z,z1;
+    z1=b*b-(4*a*c);
+    if (z1<0)
+    {
+        cout<< "Нет решений!" << endl;
+    }
+    else
+    {
+        z=sqrt(z1);
+        cout<<"Дискриминант = " << z << endl;
+        double x=(-b+z)/(2*a);
+        double y=(-b-z)/(2*a);
+        cout << "x1= " << x << endl;
+        cout << "x2= " << y << endl;
+        
+    }
+    
+    //Нахождение случайного числа в заданном диапазоне.
+    
+    int x1,y1,ch,p;
+    cout << "Левая граница = ";
+    cin >> x1; //0
+    cout << "Правая граница = ";
+    cin >> y1; //100
+    cout<<"Задумай число " << x1 << " до " << y1 << endl;
+    ch = (y1-x1)/2;
+    cout << "Правила игры:" << endl;
+    cout << "введи 1 если число больше загаданного" << endl;
+    cout << "введи 2 если число меньше загаданного" << endl;
+    cout << "введи 3 если угадал" << endl;
+    cout << "----------------------" << endl;
+    cout << "нажми 0 для начала" << endl;
+    cin >> p;
+    while (p != 3)
+    {
+        cout << "Вaше число = " << ch << "?" << endl;
+        cout << "Выберите ответ 1,2,3" << endl;
+        cin >> p;
+        if (p==1)
+        {
+           x1=ch;
+           ch = x1 + (y1-x1)/2;
+        }
+        else
+        {  
+           y1=ch;
+           ch = x1 + (y1-x1)/2;
+        }
+    }
+    //Сортировка массива из 10 элементов методом "пузырька".
+    cout << "Сортировка массива " << endl;
+    int *arr = new int[10];
+    for (int i = 0; i < 10; i++) 
+    {
+        cout << "arr[" << i << "] = ";
+        cin >> arr[i];
+    }
+    int t;
+    // Сортировка массива пузырьком
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9 - i; j++) 
+        {
+            if (arr[j] > arr[j + 1]) 
+            {
+                // меняем элементы местами
+                t = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = t;
+            }
+        }
+    }
+    for (int i = 0; i < 10; i++) 
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    delete [] arr;
+}
